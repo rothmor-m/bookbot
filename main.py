@@ -18,3 +18,11 @@ if __name__=="__main__":
 
 
 
+#do this with more than one book
+#book_path = "books/" + title + ".txt"
+#if we have a list with book_titles
+#def main():
+#for title in titles:
+#book_path = "books/title.txt" --> does that work? because the titles in the list dont have txt ??
+#text = get_book_text(book_path)
+#print(text)
