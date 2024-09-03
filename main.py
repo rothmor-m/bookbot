@@ -4,28 +4,29 @@ def main():
     text = get_book_text(book_path)
     word_count = count_words(text)     
     occur = occurence(text)
-    ls_dict =[]
-    ls_dict.append(occur)
-    print(ls_dict)
-    
-
-    #print(occur)
+    dict_list = build_character_list(occur)
+      
     print(f"--- Begin report of {book_path} ---")
     print(f"{word_count} words found in the document")
-    #for key, value in ls_dict:
-        #print(f"The {key} character was found {value} times")
-    #print(f"The {ls_dict} character was found XXXX times")
-
+    print()
+    for item in dict_list:
+        character = item["character"]
+        count = item["count"]
+        if character.isalpha():
+            print(f"The {character} character was found {count} times")
+    
+    print()
     print("--- End report ---")
 
 #create list of dict of alphabet
-def dictionary(occur):
+def build_character_list(occur):
     ls_dict = []
     for key, value in occur.items():
-        if key.isalpha():
-            ls_dict.append(key)
-    
+        new_dict = {"character" : key, "count" : value}
+        ls_dict.append(new_dict)        
+    ls_dict.sort(key=lambda x: x["count"], reverse=True)
     return ls_dict
+
 
 # split --> creates list of words from text and returns how many characters there are
 def count_words(text):
